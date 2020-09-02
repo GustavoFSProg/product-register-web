@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  // baseURL: 'https://omnistack-instagram.herokuapp.com',
+  // baseURL: 'https://products-register-api.herokuapp.com/',
   baseURL: 'http://localhost:3001/',
 })
 
