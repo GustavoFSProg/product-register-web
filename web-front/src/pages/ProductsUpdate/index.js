@@ -90,7 +90,7 @@ export default function ProductsUpdate() {
                 <button
                   type="submit"
                   className="edit-button"
-                  // onClick={(e) => handleUpdate()}
+                  onClick={(e) => handleUpdate()}
                 >
                   <span>Editar</span>
                 </button>
