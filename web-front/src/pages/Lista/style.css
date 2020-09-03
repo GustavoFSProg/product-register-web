@@ -30,9 +30,26 @@ article header .user-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 90px;
+  padding-top: 120px;
 }
 
-.info {
-  padding-top: 16px;
+.user-info {
+  margin-top: 70px;
+}
+
+.user-info .info {
+  margin-top: 20px;
+}
+
+.user-info .info .global {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+.user-info .info span {
+  padding-top: 6px;
+}
+
+.user-info .info form button {
+  margin-top: 25px;
+  color: yellowgreen;
 }

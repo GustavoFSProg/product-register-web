@@ -4,12 +4,13 @@ import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import api from '../../services/api'
-import './style.css'
+import './styleEdit.css'
 
 export default function ProductsUpdate() {
-  // const [inputId, setInputId] = useState('')
+  const [title, setTitle] = useState('')
+  const [price, setPrice] = useState('')
+  const [description, setDescription] = useState('')
 
-  // const history = useHistory()
   const [resposta, setResposta] = useState({})
 
   async function handleLIsta() {
@@ -26,6 +27,22 @@ export default function ProductsUpdate() {
     console.log(typeof resposta)
   }
 
+  async function handleUpdate(req, res) {
+    const idProduct = localStorage.getItem('ProductId')
+
+    const dados = { title, price, description }
+
+    try {
+      await api.put(`/products/update/${idProduct}`, dados)
+
+      return res.send('Produto atualizado com sucesso!')
+    } catch (error) {
+      return res.send(error, {
+        msg: 'Produto não atualizado',
+      })
+    }
+  }
+
   // useEffect(() => {
   //   handleLIsta()
   // })
@@ -35,29 +52,49 @@ export default function ProductsUpdate() {
   return (
     <article>
       <header>
-        <span></span>
         <div className="user-info">
+          <h1>Editar o Produto:</h1>
+          <br></br>
           <div className="info">
-            <span>
-              <strong> Título: </strong> {resposta.title}
-            </span>
-            <br></br>
-            <br></br>
-            <span>
-              {' '}
-              <strong> Preço: </strong> {resposta.price}
-            </span>
-            <br></br>
-            <br></br>
-            <span className="place">
-              {' '}
-              <strong> Descrição: </strong>
-              {resposta.description}
-            </span>
             <form>
-              <button type="submit" onClick={(e) => handleLIsta()}>
-                Editar
-              </button>
+              <strong> Titulo: </strong>
+              <div className="espaco"></div>
+              <input
+                placeholder={resposta.title}
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+              />
+              <span></span>
+              <br></br>
+              <span>
+                <strong> Preço: </strong>
+                <div className="espaco"></div>
+
+                <input
+                  onChange={(e) => setPrice(e.target.value)}
+                  value={price}
+                  placeholder={resposta.price}
+                />
+              </span>
+              <br></br>
+              <br></br>
+              <strong> Descrição: </strong>
+              <div className="espaco"></div>
+              <input
+                onChange={(e) => setDescription(e.target.value)}
+                value={description}
+                placeholder={resposta.description}
+              />
+              <br></br> <br></br>
+              <div className="aroundButton">
+                <button
+                  type="submit"
+                  className="edit-button"
+                  // onClick={(e) => handleUpdate()}
+                >
+                  <span>Editar</span>
+                </button>
+              </div>
             </form>
             <br></br>
           </div>

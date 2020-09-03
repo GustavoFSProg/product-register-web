@@ -22,7 +22,7 @@ function Lista() {
   function handleForm(id) {
     localStorage.setItem('ProductId', id)
 
-    alert('id: ' + id)
+    // alert('id: ' + id)
 
     history.push('/productsUpdate')
   }
@@ -39,33 +39,29 @@ function Lista() {
               alt="imagem"
             />
             <div className="info">
-              <span>
-                <strong> Título: </strong> {resp.title}
-              </span>
-              <br></br>
-              <br></br>
-              <span>
-                {' '}
-                <strong> Preço: </strong> {resp.price}
-              </span>
-              <br></br>
-              <br></br>
-              <span className="place">
-                {' '}
-                <strong> Descrição: </strong>
-                {resp.description}
-              </span>
+              <div className="global">
+                <span>
+                  <strong> Título: </strong> {resp.title}
+                </span>
+                <br></br>
+                <br></br>
+                <span>
+                  {' '}
+                  <strong> Preço: </strong> {resp.price}
+                </span>
+                <br></br>
+                <br></br>
+                <span className="place">
+                  {' '}
+                  <strong> Descrição: </strong>
+                  {resp.description}
+                </span>
+              </div>
               <form>
-                <input
-                  name="id"
-                  value={resp._id}
-                  onChange={(e) => setInputId(e.target.value)}
-                />
                 <button type="submit" onClick={(e) => handleForm(resp._id)}>
                   Editar
                 </button>
               </form>
-              <br></br>
             </div>
           </div>
         </header>
